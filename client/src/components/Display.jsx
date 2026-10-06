@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { isAddress } from "ethers";
 import { toGatewayUrl } from "../lib/ipfs";
 import { errorMessage, shortAddress } from "../lib/format";
@@ -11,20 +11,23 @@ export default function Display({ contract, account, refreshKey }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => setOwner(account), [account]);
+  const requestId = useRef(0);
 
   const load = useCallback(async () => {
+    const id = ++requestId.current;
     setLoading(true);
     setError("");
     try {
       const [list, grantors] = await Promise.all([contract.display(owner), contract.sharedWithMe()]);
+      if (id !== requestId.current) return;
       setFiles(list.map((f) => ({ url: f.url, fileType: f.fileType, fileName: f.fileName, uploadedAt: Number(f.uploadedAt) })));
       setShared(grantors);
     } catch (err) {
+      if (id !== requestId.current) return;
       setFiles([]);
       setError(errorMessage(err));
     } finally {
-      setLoading(false);
+      if (id === requestId.current) setLoading(false);
     }
   }, [contract, owner]);
 

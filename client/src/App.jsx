@@ -110,7 +110,7 @@ export default function App() {
       ) : (
         <>
           <FileUpload contract={contract} onUploaded={() => setRefreshKey((k) => k + 1)} />
-          <Display contract={contract} account={account} refreshKey={refreshKey} />
+          <Display key={account} contract={contract} account={account} refreshKey={refreshKey} />
         </>
       )}
 
