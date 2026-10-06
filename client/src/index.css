@@ -1,0 +1,68 @@
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: #e6e9ef;
+  background: #0f172a;
+  --panel: #1e293b;
+  --border: #334155;
+  --muted: #94a3b8;
+  --accent: #6366f1;
+  --danger: #ef4444;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; }
+a { color: #a5b4fc; }
+h1, h2, h3 { margin: 0 0 0.5rem; }
+code { background: #0f172a; padding: 0.1rem 0.3rem; border-radius: 4px; font-size: 0.85em; }
+
+.app { max-width: 1000px; margin: 0 auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.subtitle { margin: 0; color: var(--muted); }
+.wallet { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.panel.center { text-align: center; align-items: center; }
+
+.row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.row.between { justify-content: space-between; }
+.row.center { justify-content: center; }
+.stack { display: flex; flex-direction: column; gap: 0.5rem; }
+.grow { flex: 1; min-width: 200px; }
+.upload-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+
+input { background: #0f172a; color: inherit; border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.75rem; font: inherit; }
+input[type="file"] { padding: 0.4rem; }
+
+.btn { background: #334155; color: inherit; border: 1px solid transparent; border-radius: 8px; padding: 0.55rem 1rem; font: inherit; cursor: pointer; }
+.btn:hover:not(:disabled) { border-color: #64748b; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn.primary { background: var(--accent); }
+.btn.danger { background: var(--danger); }
+
+.badge { background: #334155; padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.9rem; }
+.badge.account { font-family: monospace; }
+.label { color: var(--muted); font-size: 0.9rem; }
+.hint { color: var(--muted); margin: 0; font-size: 0.9rem; }
+
+.alert { padding: 0.6rem 0.9rem; border-radius: 8px; word-break: break-word; }
+.alert.error { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--danger); }
+.alert.info { background: rgba(99, 102, 241, 0.15); border: 1px solid var(--accent); }
+
+.shared { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.chip { background: #0f172a; color: inherit; border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.75rem; font-family: monospace; cursor: pointer; }
+.chip:hover { border-color: var(--accent); }
+
+.files { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; }
+.file { background: #0f172a; border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 0.4rem; }
+.file:hover { border-color: var(--accent); }
+.file img, .file-icon { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; }
+.file-icon { display: flex; align-items: center; justify-content: center; background: #1e293b; font-weight: 700; color: #a5b4fc; font-size: 1.25rem; }
+.file-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-meta { color: var(--muted); font-size: 0.8rem; }
+
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.modal { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 0.75rem; max-height: 90vh; overflow: auto; }
+.access-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.access-list li { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.access-list code { overflow: hidden; text-overflow: ellipsis; }
